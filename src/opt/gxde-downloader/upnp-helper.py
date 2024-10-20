@@ -33,7 +33,7 @@ def get_aria2_ports():
 
 def setup_upnp_mapping(ports):
     upnpc = miniupnpc.UPnP()
-    upnpc.discoverdelay = 200
+    upnpc.discoverdelay = 5000
     discovered = 0
 
     try:
