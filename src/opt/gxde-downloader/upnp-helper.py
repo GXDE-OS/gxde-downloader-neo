@@ -34,7 +34,7 @@ def get_aria2_ports():
 def setup_upnp_mapping(ports):
     upnpc = miniupnpc.UPnP()
     upnpc.discoverdelay = 200
-    discovered = 0  # 给 discovered 设置一个初始值
+    discovered = 0
 
     try:
         discovered = upnpc.discover()
@@ -45,29 +45,28 @@ def setup_upnp_mapping(ports):
         else:
             print(f"UPnP discovery failed with error: {e}")
             return
-    
+
     if discovered > 0:
-        # 打印设备列表，看看是否存在 IGD
         for i in range(discovered):
-            print(f"Device {i}: {upnpc.selectigd(i)}")
-
-        try:
-            # 尝试选择第一个设备作为 IGD
-            upnpc.selectigd(0)  # 选择第一个设备（索引从0开始）
-        except Exception as e:
-            print(f"Failed to select IGD: {e}")
-            return
-
-        local_ip = upnpc.lanaddr
-
-        for port in ports:
             try:
-                upnpc.addportmapping(port, 'TCP', local_ip, port, 'Aria2 RPC Port', '')
-                print(f"UPnP Port Mapping successful: {local_ip}:{port} -> External Port {port}")
+                # 调用 selectigd() 不带参数，默认选择第一个 IGD
+                upnpc.selectigd()
+                print(f"Selected IGD: {upnpc.lanaddr}")  # 打印选中的设备局域网地址
+
+                local_ip = upnpc.lanaddr
+
+                for port in ports:
+                    try:
+                        # 尝试为每个端口添加映射
+                        upnpc.addportmapping(port, 'TCP', local_ip, port, 'Aria2 RPC Port', '')
+                        print(f"UPnP Port Mapping successful: {local_ip}:{port} -> External Port {port}")
+                    except Exception as e:
+                        print(f"Failed to add UPnP port mapping for port {port}: {e}")
             except Exception as e:
-                print(f"Failed to add UPnP port mapping for port {port}: {e}")
+                print(f"Failed to select IGD {i}: {e}")
     else:
         print("No UPnP devices found.")
+
 
 
 if __name__ == '__main__':
