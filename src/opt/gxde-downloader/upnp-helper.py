@@ -37,9 +37,8 @@ def setup_upnp_mapping(ports):
     discovered = 0  # 给 discovered 设置一个初始值
 
     try:
-        # 捕获 discover 的返回值，并忽略“成功”异常
         discovered = upnpc.discover()
-        print(f"Number of UPnP devices discovered: {discovered}")  # 记录发现的设备数量
+        print(f"Number of UPnP devices discovered: {discovered}")
     except Exception as e:
         if "Success" in str(e):
             print("Discovery returned success, proceeding...")
@@ -48,8 +47,13 @@ def setup_upnp_mapping(ports):
             return
     
     if discovered > 0:
+        # 打印设备列表，看看是否存在 IGD
+        for i in range(discovered):
+            print(f"Device {i}: {upnpc.selectigd(i)}")
+
         try:
-            upnpc.selectigd()  # 选择第一个互联网网关设备
+            # 尝试选择第一个设备作为 IGD
+            upnpc.selectigd(0)  # 选择第一个设备（索引从0开始）
         except Exception as e:
             print(f"Failed to select IGD: {e}")
             return
@@ -64,6 +68,7 @@ def setup_upnp_mapping(ports):
                 print(f"Failed to add UPnP port mapping for port {port}: {e}")
     else:
         print("No UPnP devices found.")
+
 
 if __name__ == '__main__':
     aria2_ports = get_aria2_ports()
