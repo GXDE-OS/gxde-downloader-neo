@@ -12,5 +12,5 @@ Rules-Requires-Root: no
 Package: gxde-downloader
 Architecture: all
 Multi-Arch: foreign
-Depends: ${misc:Depends},spark-webapp-runtime(>=1.8),aria2,bash,unzip
+Depends: ${misc:Depends},spark-webapp-runtime(>=1.8),aria2,bash,unzip,python3-miniupnpc
 Description: Based on AriaNG we create Downloader NEO
