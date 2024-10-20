@@ -5,7 +5,9 @@ if [[ ! -e "${HOME}/.config/GXDE/gxde-downloader/aria2.conf" ]]; then
     unzip /opt/gxde-downloader/gxde-downloader.zip
     popd
 fi
-
+pushd "${HOME}/.config/GXDE/gxde-downloader/"
+./tracker.sh &
+popd
 # 启动aria2c并记录PID
 aria2c --conf-path "${HOME}/.config/GXDE/gxde-downloader/aria2.conf" &
 ARIA2C_PID=$!
