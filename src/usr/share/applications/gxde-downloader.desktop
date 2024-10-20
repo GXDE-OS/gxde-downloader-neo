@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GXDE Downloader
+Name[zh_CN]=GXDE 下载助手
+Exec=/opt/gxde-downloader/launcher.sh
+Type=Application
+Terminal=false
+StartupNotify=true
+Encoding=UTF-8
+Comment=Discord(Web)
+Icon=/opt/gxde-downloader/downloader-arrow.svg

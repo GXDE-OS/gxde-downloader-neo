@@ -1,0 +1,23 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: gxde-downloader-neo
+Upstream-Contact: <preferred name and address to reach the upstream project>
+Source: <url://example.com>
+#
+# Please double check copyright with the licensecheck(1) command.
+
+Files:     .github/workflows/program-builder.yml
+           opt/gxde-downloader/gxde-downloader.zip
+           opt/gxde-downloader/gxdown-aria2-launcher.sh
+           opt/gxde-downloader/launcher.sh
+           usr/share/applications/gxde-downloader.desktop
+Copyright: __NO_COPYRIGHT_NOR_LICENSE__
+License:   __NO_COPYRIGHT_NOR_LICENSE__
+
+#----------------------------------------------------------------------------
+# xml and html files (skipped):
+#         opt/gxde-downloader/downloader-arrow.svg
+#         opt/gxde-downloader/index.html
+
+#----------------------------------------------------------------------------
+# Files marked as NO_LICENSE_TEXT_FOUND may be covered by the following
+# license/copyright files.
