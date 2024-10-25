@@ -1,0 +1,10 @@
+#!/bin/bash
+for username in `ls /home`      
+    do
+      echo /home/$username
+        if [ -e /home/$username/.config/GXDE/gxde-downloader ]
+        then
+        rm -rf /home/$username/.config/GXDE/gxde-downloader
+        fi
+    done
+
