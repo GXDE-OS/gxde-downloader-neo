@@ -1,5 +1,5 @@
 Source: gxde-downloader-neo
-Section: unknown
+Section: utils
 Priority: optional
 Maintainer: shenmo <shenmo@spark-app.store>
 Build-Depends: debhelper-compat (= 13)
@@ -12,5 +12,11 @@ Rules-Requires-Root: no
 Package: gxde-downloader
 Architecture: all
 Multi-Arch: foreign
-Depends: ${misc:Depends},spark-webapp-runtime(>=1.8),aria2,bash,unzip,python3-miniupnpc
+Depends: 
+ ${misc:Depends},
+ spark-webapp-runtime (>=1.8),
+ aria2,
+ bash,
+ unzip,
+ python3-miniupnpc
 Description: Based on AriaNG we create Downloader NEO

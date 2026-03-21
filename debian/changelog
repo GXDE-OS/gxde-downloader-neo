@@ -1,6 +1,10 @@
-gxde-downloader-neo (1.1.3) UNRELEASED; urgency=low
+gxde-downloader-neo (1.1.4) UNRELEASED; urgency=low
 
+  [ shenmo ]
   * Add: UPNP Client to enhance ports
   * Add: Enable DHT 6
   * Add: Change Default Port
- -- shenmo <shenmo@spark-app.store>  Sun, 20 Oct 2024 17:01:04 +0800
+  [ gfdgd_xi ]
+  * 更新 AriaNg 至 1.3.13
+
+ -- gfdgd_xi <3025613752@qq.com>  Sat, 21 Mar 2026 12:03:56 +0800
