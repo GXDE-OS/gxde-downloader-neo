@@ -1,0 +1,27 @@
+# Maintainer: CharOfString <root@charofstring.cc>
+pkgname=gxde-downloader-git
+pkgver=1.1.6
+pkgrel=1
+pkgdesc='Downloader NEO for GXDE, based on AriaNg'
+arch=('any')
+url="https://github.com/GXDE-OS/gxde-downloader-neo"
+# 自带的 AriaNg 网页界面为 MIT 许可 ・ The bundled AriaNg web UI is MIT licensed.
+license=('GPL-3.0-or-later' 'MIT')
+depends=('spark-webapp-runtime-git' 'aria2' 'bash' 'unzip' 'python' 'python-miniupnpc')
+makedepends=('git')
+provides=('gxde-downloader')
+conflicts=('gxde-downloader' 'gxde-downloader-neo-git')
+source=()
+sha512sums=()
+
+# 直接使用 PKGBUILD 所在的 git 仓库作为源码 ・ Build from the git checkout this PKGBUILD lives in.
+_srcroot() {
+  git -C "$startdir" rev-parse --show-toplevel
+}
+
+package() {
+  # 与 debian/install（src/* /）相同 ・ Same as debian/install (src/* /).
+  cp -r --no-preserve=ownership "$(_srcroot)/src/." "$pkgdir/"
+  install -Dm644 "$(_srcroot)/src/opt/gxde-downloader/resources/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/AriaNg-LICENSE"
+}

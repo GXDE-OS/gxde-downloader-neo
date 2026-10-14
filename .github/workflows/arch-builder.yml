@@ -1,0 +1,10 @@
+name: Building Arch Package
+run-name: Building ${{ GITHUB.REPOSITORY }} for Arch Linux
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call:
+    uses: GXDE-OS/GXDE/.github/workflows/building-pkg.yml@master
+    secrets: inherit
