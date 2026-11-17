@@ -1,5 +1,5 @@
 # Maintainer: CharOfString <root@charofstring.cc>
-pkgname=gxde-downloader-git
+pkgname=gxde-downloader
 pkgver=1.1.6
 pkgrel=1
 pkgdesc='Downloader NEO for GXDE, based on AriaNg'
@@ -7,10 +7,11 @@ arch=('any')
 url="https://github.com/GXDE-OS/gxde-downloader-neo"
 # 自带的 AriaNg 网页界面为 MIT 许可 ・ The bundled AriaNg web UI is MIT licensed.
 license=('GPL-3.0-or-later' 'MIT')
-depends=('spark-webapp-runtime-git' 'aria2' 'bash' 'unzip' 'python' 'python-miniupnpc')
+depends=('spark-webapp-runtime' 'aria2' 'bash' 'unzip' 'python' 'python-miniupnpc')
 makedepends=('git')
-provides=('gxde-downloader')
-conflicts=('gxde-downloader' 'gxde-downloader-neo-git')
+provides=("gxde-downloader-git=$pkgver")
+conflicts=('gxde-downloader-neo-git' 'gxde-downloader-git')
+replaces=('gxde-downloader-git')
 source=()
 sha512sums=()
 
